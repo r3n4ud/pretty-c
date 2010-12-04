@@ -25,55 +25,15 @@ local keyword = tohash {
    "while",
 }
 
--- base to types
 local type = tohash {
    "char", "double", "float", "int", "long", "short", "signed", "unsigned",
    "void",
 }
 
--- new hash
 local preproc = tohash {
    "define", "include", "pragma", "if", "ifdef", "ifndef", "elif", "endif",
    "defined",
 }
-
-
--- local libraries = {
---     coroutine = tohash {
---         "create", "resume", "status", "wrap", "yield", "running",
---     },
---     package = tohash{
---         "cpath", "loaded", "loadlib", "path", "config", "preload", "seeall",
---     },
---     io = tohash{
---         "close", "flush", "input", "lines", "open", "output", "read", "tmpfile",
---         "type", "write", "stdin", "stdout", "stderr", "popen",
---     },
---     math = tohash{
---         "abs", "acos", "asin", "atan", "atan2", "ceil", "cos", "deg", "exp",
---         "floor ", "ldexp", "log", "max", "min", "pi", "pow", "rad", "random",
---         "randomseed", "sin", "sqrt", "tan", "cosh", "sinh", "tanh", "huge",
---     },
---     string = tohash{
---         "byte", "char", "dump", "find", "len", "lower", "rep", "sub", "upper",
---         "format", "gfind", "gsub", "gmatch", "match", "reverse",
---     },
---     table = tohash{
---         "concat", "foreach", "foreachi", "sort", "insert", "remove", "pack",
---         "unpack",
---     },
---     os = tohash{
---         "clock", "date", "difftime", "execute", "exit", "getenv", "remove",
---         "rename", "setlocale", "time", "tmpname",
---     },
---     lpeg = tohash{
---         "print", "match", "locale", "type", "version", "setmaxstack",
---         "P", "R", "S", "C", "V", "Cs", "Ct", "Cs", "Cp", "Carg",
---         "Cg", "Cb", "Cmt", "Cf", "B",
---     },
---     -- bit
---     -- debug
--- }
 
 local context               = context
 local verbatim              = context.verbatim
@@ -107,7 +67,7 @@ local function visualizename_a(s)
       namespace = nil
       CSnippetPreproc(s)
    else 
-      CSnippetName(s)
+--      CSnippetName(s)
       -- else
       --     namespace = libraries[s]
       --     if namespace then
@@ -137,10 +97,15 @@ local handler = visualizers.newhandler {
     startdisplay = function() startCSnippet() end,
     stopdisplay  = function() stopCSnippet() end ,
     boundary     = function(s) CSnippetBoundary(s) end,
-    special      = function(s) CSnippetSpecial (s) end,
-    comment      = function(s) CSnippetComment (s) end,
+    special      = function(s) CSnippetSpecial(s) end,
+    comment      = function(s) CSnippetComment(s) end,
     period       = function(s) verbatim(s) end,
-    string       = function(s) CSnippetString (s) end,
+    string       = function(s) CSnippetString(s) end,
+    
+    name         = function(s) CSnippetName(s) end,
+    type         = function(s) CSnippetType(s) end,
+    preproc      = function(s) CSnippetPreproc(s) end,
+
     name_a       = visualizename_a,
     name_b       = visualizename_b,
     name_c       = visualizename_c,
@@ -162,31 +127,36 @@ local name        = (patterns.letter + patterns.underscore)
 local boundary    = S('()[]{}')
 --local special     = S("-+/*^%=#") + P("..")
 
-local grammar = visualizers.newgrammar("default", { "visualizer",
+local grammar = visualizers.newgrammar(
+   "default",
+   {
+      "visualizer",
 
-    sstring =
-         makepattern(handler,"string",patterns.dquote)
-      * (V("whitespace") + makepattern(handler,"string",(P("\\")*P(1))+1-patterns.dquote))^0
-       * makepattern(handler,"string",patterns.dquote),
+      sstring = makepattern(handler,"string",patterns.dquote)
+      * ( V("whitespace") + makepattern(handler,"string",(P("\\")*P(1))+1-patterns.dquote) )^0
+      * makepattern(handler,"string",patterns.dquote),
 
-    dstring =
-         makepattern(handler,"string",patterns.squote)
-      * (V("whitespace") + makepattern(handler,"string",(P("\\")*P(1))+1-patterns.squote))^0
-       * makepattern(handler,"string",patterns.squote),
+      dstring = makepattern(handler,"string",patterns.squote)
+      * ( V("whitespace") + makepattern(handler,"string",(P("\\")*P(1))+1-patterns.squote) )^0
+      * makepattern(handler,"string",patterns.squote),
 
-    comment =
-         makepattern(handler,"comment",comment),
---       * (V("space") + V("content"))^0,
+      comment = makepattern(handler,"comment",comment),
+      --       * (V("space") + V("content"))^0,
 
-    incomment =
-         makepattern(handler,"comment",incomment_open)
-       * (V("whitespace") + makepattern(handler,"comment",1-incomment_close))^0
-       * makepattern(handler,"comment",incomment_close),
+      incomment = makepattern(handler,"comment",incomment_open)
+      * ( V("whitespace") + makepattern(handler,"comment",1-incomment_close) )^0
+      * makepattern(handler,"comment",incomment_close),
 
-    name =
+   preproc = makepattern(handler,"preproc", P("#")) * V("optionalwhitespace") * makepattern(handler,"preproc", name) * V("whitespace") 
+* ((makepattern(handler,"comment", name) * makepattern(handler,"default",P("(")) * (V("pattern")-P(")"))^0 * makepattern(handler,"default",P(")")))
++ ((makepattern(handler,"string", name) )
+)) ,
+
+
+   name =
        (makepattern(handler,"name_a",P("#")) *
-     V("optionalwhitespace"))^0 *
-        makepattern(handler,"name_a",name)
+       V("optionalwhitespace"))^0 *
+       makepattern(handler,"name_a",name)
       * (   V("optionalwhitespace")
           * makepattern(handler,"default",patterns.period)
           * V("optionalwhitespace")
@@ -204,6 +174,7 @@ local grammar = visualizers.newgrammar("default", { "visualizer",
       + V("comment")
       + V("dstring")
       + V("sstring")
+      + V("preproc")
       + V("name")
       + makepattern(handler,"boundary",boundary)
 --      + makepattern(handler,"special",special)
