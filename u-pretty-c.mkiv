@@ -1,27 +1,36 @@
+%C Copyright 2010 Renaud Aubin <renaud.aubin@gmail.com>
+%C Time-stamp: <2010-12-05 02:45:18>
+%C This program is free software: you can redistribute it and/or modify
+%C it under the terms of the GNU General Public License as published by
+%C the Free Software Foundation, either version 3 of the License, or
+%C (at your option) any later version.
+%C
+%C This program is distributed in the hope that it will be useful,
+%C but WITHOUT ANY WARRANTY; without even the implied warranty of
+%C MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+%C GNU General Public License for more details.
+%C
+%C You should have received a copy of the GNU General Public License
+%C along with this program.  If not, see <http://www.gnu.org/licenses/>.
+%C
 %D \module
 %D   [       file=u-pretty-c,
-%D        version=2010.12.04,
-%D          title=\CONTEXT\ Visualizer Macros,
-%D       subtitle=\XML,
-%D         author=Peter Münster (ported to LPeg by Renaud Aubin),
+%D        version=1.5,
+%D          title=C Pretty Printer for the \CONTEXT\ Macro package,
+%D         author=Renaud Aubin
 %D           date=\currentdate,
-%D      copyright=Renaud Aubin]
-%C Time-stamp: <>
-%C This module is part of the \CONTEXT\ macro||package and is
-%C therefore copyrighted by \PRAGMA. See mreadme.pdf for
-%C details.
+%D      copyright=2010 Renaud Aubin]
  
 \registerctxluafile{u-pretty-c.lua}{1.5}
 
 \unprotect
 
 \definecolor [darkred]       [r=.545098] % comment
-\definecolor [orchid]        [r=.854902,g=.439216,b=.839216] % preproc
+\definecolor [orchid]        [r=.854902,g=.439216,b=.839216]
 \definecolor [rosybrown]     [r=.737255,g=.560784,b=.560784]
-\definecolor [forestgreen]   [r=.133333,g=.545098,b=.133333] % type
-\definecolor [purple]        [r=.627451,g=.12549,b=.941176] % keyword
-\definecolor [darkgoldenrod] [r=.721569,g=.52549,b=.043137] % name
-
+\definecolor [forestgreen]   [r=.133333,g=.545098,b=.133333]
+\definecolor [purple]        [r=.627451,g=.12549,b=.941176]
+\definecolor [darkgoldenrod] [r=.721569,g=.52549,b=.043137]
 
 \definestartstop
     [CSnippet]
@@ -30,48 +39,37 @@
 \definestartstop
     [CSnippetName]
     [\c!color=darkgoldenrod,
-     \c!style=boldface]
+     \c!style=]
 
 \definestartstop
     [CSnippetKeyword]
     [\c!color=purple,
-     \c!style=boldface]
+     \c!style=]
 
 \definestartstop
     [CSnippetType]
     [\c!color=forestgreen,
-     \c!style=boldface]
+     \c!style=]
 
 \definestartstop
     [CSnippetPreproc]
     [\c!color=orchid,
-     \c!style=boldface]
+     \c!style=]
 
 \definestartstop
     [CSnippetBoundary]
     [\c!color=darkblue,
-     \c!style=boldface]
-
-\definestartstop
-    [CSnippetSpecial]
-    [\c!color=darkred,
-     \c!style=boldface]
+     \c!style=]
 
 \definestartstop
     [CSnippetComment]
     [\c!color=darkred,
-     \c!style=boldface]
+     \c!style=]
 
 \definestartstop
     [CSnippetString]
     [\c!color=rosybrown,
-     \c!style=boldface]
-
-\definestartstop
-    [CSnippetFunctionId]
-    [\c!color=blue,
      \c!style=]
-
 
 \definetyping
     [C]
