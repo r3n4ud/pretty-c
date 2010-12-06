@@ -1,5 +1,5 @@
 %C Copyright 2010 Renaud Aubin <renaud.aubin@gmail.com>
-%C Time-stamp: <2010-12-05 02:45:18>
+%C Time-stamp: <2010-12-06 20:26:36>
 %C This program is free software: you can redistribute it and/or modify
 %C it under the terms of the GNU General Public License as published by
 %C the Free Software Foundation, either version 3 of the License, or
@@ -14,23 +14,23 @@
 %C along with this program.  If not, see <http://www.gnu.org/licenses/>.
 %C
 %D \module
-%D   [       file=u-pretty-c,
-%D        version=1.5,
+%D   [       file=t-pretty-c,
+%D        version=1.501,
 %D          title=C Pretty Printer for the \CONTEXT\ Macro package,
 %D         author=Renaud Aubin
 %D           date=\currentdate,
 %D      copyright=2010 Renaud Aubin]
  
-\registerctxluafile{u-pretty-c.lua}{1.5}
+\registerctxluafile{t-pretty-c.lua}{1.501}
 
 \unprotect
 
-\definecolor [darkred]       [r=.545098] % comment
-\definecolor [orchid]        [r=.854902,g=.439216,b=.839216]
-\definecolor [rosybrown]     [r=.737255,g=.560784,b=.560784]
-\definecolor [forestgreen]   [r=.133333,g=.545098,b=.133333]
-\definecolor [purple]        [r=.627451,g=.12549,b=.941176]
-\definecolor [darkgoldenrod] [r=.721569,g=.52549,b=.043137]
+\definecolor [Cdarkred]       [r=.545098] % comment
+\definecolor [Corchid]        [r=.854902,g=.439216,b=.839216]
+\definecolor [Crosybrown]     [r=.737255,g=.560784,b=.560784]
+\definecolor [Cforestgreen]   [r=.133333,g=.545098,b=.133333]
+\definecolor [Cpurple]        [r=.627451,g=.12549,b=.941176]
+\definecolor [Cdarkgoldenrod] [r=.721569,g=.52549,b=.043137]
 
 \definestartstop
     [CSnippet]
@@ -38,37 +38,37 @@
 
 \definestartstop
     [CSnippetName]
-    [\c!color=darkgoldenrod,
+    [\c!color=Cdarkgoldenrod,
      \c!style=]
 
 \definestartstop
     [CSnippetKeyword]
-    [\c!color=purple,
+    [\c!color=Cpurple,
      \c!style=]
 
 \definestartstop
     [CSnippetType]
-    [\c!color=forestgreen,
+    [\c!color=Cforestgreen,
      \c!style=]
 
 \definestartstop
     [CSnippetPreproc]
-    [\c!color=orchid,
+    [\c!color=Corchid,
      \c!style=]
 
 \definestartstop
     [CSnippetBoundary]
-    [\c!color=darkblue,
+    [\c!color=Cdarkblue,
      \c!style=]
 
 \definestartstop
     [CSnippetComment]
-    [\c!color=darkred,
+    [\c!color=Cdarkred,
      \c!style=]
 
 \definestartstop
     [CSnippetString]
-    [\c!color=rosybrown,
+    [\c!color=Crosybrown,
      \c!style=]
 
 \definetyping

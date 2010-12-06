@@ -1,5 +1,5 @@
 -- Copyright 2010 Renaud Aubin <renaud.aubin@gmail.com>
--- Time-stamp: <2010-12-05 02:42:54>
+-- Time-stamp: <2010-12-06 20:25:06>
 -- This program is free software: you can redistribute it and/or modify
 -- it under the terms of the GNU General Public License as published by
 -- the Free Software Foundation, either version 3 of the License, or
@@ -13,9 +13,9 @@
 -- You should have received a copy of the GNU General Public License
 -- along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-if not modules then modules = { } end modules ['u-pretty-c'] = {
-    version   = 1.5,
-    comment   = "Companion to u-pretty-c.mkiv",
+if not modules then modules = { } end modules ['t-pretty-c'] = {
+    version   = 1.501,
+    comment   = "Companion to t-pretty-c.mkiv",
     author    = "Renaud Aubin",
     copyright = "2010 Renaud Aubin",
     license   = "GNU General Public License version 3"
