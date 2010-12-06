@@ -1,5 +1,5 @@
 %C Copyright 2010 Renaud Aubin <renaud.aubin@gmail.com>
-%C Time-stamp: <2010-12-06 20:26:36>
+%C Time-stamp: <2010-12-06 20:38:50>
 %C This program is free software: you can redistribute it and/or modify
 %C it under the terms of the GNU General Public License as published by
 %C the Free Software Foundation, either version 3 of the License, or
@@ -25,12 +25,13 @@
 
 \unprotect
 
-\definecolor [Cdarkred]       [r=.545098] % comment
-\definecolor [Corchid]        [r=.854902,g=.439216,b=.839216]
-\definecolor [Crosybrown]     [r=.737255,g=.560784,b=.560784]
-\definecolor [Cforestgreen]   [r=.133333,g=.545098,b=.133333]
-\definecolor [Cpurple]        [r=.627451,g=.12549,b=.941176]
-\definecolor [Cdarkgoldenrod] [r=.721569,g=.52549,b=.043137]
+\definecolor [Ccomment]    [r=.545098]                     % darkred
+\definecolor [Cpreproc]    [r=.854902,g=.439216,b=.839216] % orchid
+\definecolor [Cstring]     [r=.737255,g=.560784,b=.560784] % rosybrown
+\definecolor [Ctype]       [r=.133333,g=.545098,b=.133333] % forestgreen
+\definecolor [Ckeyword]    [r=.627451,g=.12549,b=.941176]  % purple
+\definecolor [Cname]       [r=.721569,g=.52549,b=.043137]  % darkgoldenrod
+\definecolor [Cfuncnbound] [b=.625]
 
 \definestartstop
     [CSnippet]
@@ -38,37 +39,37 @@
 
 \definestartstop
     [CSnippetName]
-    [\c!color=Cdarkgoldenrod,
+    [\c!color=Cname,
      \c!style=]
 
 \definestartstop
     [CSnippetKeyword]
-    [\c!color=Cpurple,
+    [\c!color=Ckeyword,
      \c!style=]
 
 \definestartstop
     [CSnippetType]
-    [\c!color=Cforestgreen,
+    [\c!color=Ctype,
      \c!style=]
 
 \definestartstop
     [CSnippetPreproc]
-    [\c!color=Corchid,
+    [\c!color=Cpreproc,
      \c!style=]
 
 \definestartstop
     [CSnippetBoundary]
-    [\c!color=Cdarkblue,
+    [\c!color=Cfuncnbound,
      \c!style=]
 
 \definestartstop
     [CSnippetComment]
-    [\c!color=Cdarkred,
+    [\c!color=Ccomment,
      \c!style=]
 
 \definestartstop
     [CSnippetString]
-    [\c!color=Crosybrown,
+    [\c!color=Cstring,
      \c!style=]
 
 \definetyping
