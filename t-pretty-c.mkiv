@@ -1,5 +1,5 @@
 %C Copyright 2010 Renaud Aubin <renaud.aubin@gmail.com>
-%C Time-stamp: <2010-12-06 20:59:25>
+%C Time-stamp: <2010-12-10 12:24:11>
 %C This program is free software: you can redistribute it and/or modify
 %C it under the terms of the GNU General Public License as published by
 %C the Free Software Foundation, either version 3 of the License, or
@@ -28,13 +28,7 @@
 
 \unprotect
 
-\definecolor [Ccomment]    [r=.545098]                     % darkred
-\definecolor [Cpreproc]    [r=.854902,g=.439216,b=.839216] % orchid
-\definecolor [Cstring]     [r=.737255,g=.560784,b=.560784] % rosybrown
-\definecolor [Ctype]       [r=.133333,g=.545098,b=.133333] % forestgreen
-\definecolor [Ckeyword]    [r=.627451,g=.12549,b=.941176]  % purple
-\definecolor [Cname]       [r=.721569,g=.52549,b=.043137]  % darkgoldenrod
-\definecolor [Cfuncnbound] [b=.625]
+\setupcolor[ema]
 
 \definestartstop
     [CSnippet]
@@ -42,37 +36,37 @@
 
 \definestartstop
     [CSnippetName]
-    [\c!color=Cname,
+    [\c!color=darkgoldenrod,
      \c!style=]
 
 \definestartstop
     [CSnippetKeyword]
-    [\c!color=Ckeyword,
+    [\c!color=purple,
      \c!style=]
 
 \definestartstop
     [CSnippetType]
-    [\c!color=Ctype,
+    [\c!color=forestgreen,
      \c!style=]
 
 \definestartstop
     [CSnippetPreproc]
-    [\c!color=Cpreproc,
+    [\c!color=orchid,
      \c!style=]
 
 \definestartstop
     [CSnippetBoundary]
-    [\c!color=Cfuncnbound,
+    [\c!color=steelblue,
      \c!style=]
 
 \definestartstop
     [CSnippetComment]
-    [\c!color=Ccomment,
+    [\c!color=darkred,
      \c!style=]
 
 \definestartstop
     [CSnippetString]
-    [\c!color=Cstring,
+    [\c!color=rosybrown,
      \c!style=]
 
 \definetyping
